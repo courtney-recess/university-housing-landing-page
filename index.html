@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recess · University Housing</title>
+  <meta name="description" content="A visual tour of brand activations Recess has run at university housing across the country.">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    body {
+      background: #ffffff;
+      color: var(--text-black);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 48px;
+      background: var(--glass-bg-light);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px;
+      background: var(--color-aqua); color: #fff;
+      font-weight: 600; font-size: 14px;
+      border-radius: var(--radius-button);
+      transition: background var(--transition-base), transform var(--transition-base);
+    }
+    .nav-cta:hover { background: var(--color-orange); transform: var(--hover-lift); }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 140px 48px 80px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .hero-copy { max-width: 520px; }
+    .hero-label {
+      display: inline-block;
+      font-size: var(--font-size-section-label);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-widest);
+      text-transform: uppercase;
+      color: var(--color-aqua);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: var(--font-size-hero);
+      font-weight: var(--font-weight-black);
+      line-height: var(--line-height-tight);
+      letter-spacing: var(--letter-spacing-tight);
+      margin-bottom: 24px;
+    }
+    .hero h1 em { color: var(--color-aqua); font-style: normal; }
+    .hero-stat {
+      display: flex; align-items: baseline; gap: 14px;
+      font-size: 17px; color: var(--text-body);
+      margin-top: 32px;
+    }
+    .hero-stat strong {
+      font-size: 48px; font-weight: 900; color: var(--color-aqua);
+      letter-spacing: -1px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 120px);
+      gap: 10px;
+    }
+    .hero-tile { position: relative; overflow: hidden; border-radius: 12px; }
+    .hero-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .hero-tile:hover img { transform: var(--hover-scale); }
+    .hero-tile figcaption {
+      position: absolute; left: 10px; bottom: 10px; right: 10px;
+      opacity: 0; transition: opacity var(--transition-base);
+    }
+    .hero-tile:hover figcaption { opacity: 1; }
+    .hero-tile .chip {
+      display: inline-block;
+      background: rgba(255,255,255,0.95);
+      color: var(--color-aqua);
+      padding: 4px 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+      border-radius: 100px; text-transform: uppercase;
+    }
+    .hero-tile-1 { grid-column: span 2; grid-row: span 2; }
+    .hero-tile-2 { grid-column: 3; grid-row: 1; }
+    .hero-tile-3 { grid-column: 3; grid-row: 2; }
+    .hero-tile-4 { grid-column: 1; grid-row: 3; }
+    .hero-tile-5 { grid-column: 2; grid-row: 3; }
+    .hero-tile-6 { grid-column: 3; grid-row: 3; }
+
+    /* ── SECTION BASE ─────────────────────────────────── */
+    section.block {
+      padding: var(--spacing-section-y) var(--spacing-section-x);
+      max-width: var(--max-width-content); margin: 0 auto;
+    }
+    .block-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .block-label {
+      display: block;
+      font-size: var(--font-size-section-label);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-widest);
+      text-transform: uppercase;
+      color: var(--color-aqua);
+      margin-bottom: 10px;
+    }
+    .block-title {
+      font-size: var(--font-size-section-title);
+      font-weight: var(--font-weight-extrabold);
+      line-height: var(--line-height-snug);
+      letter-spacing: var(--letter-spacing-tight);
+      max-width: 640px;
+    }
+    .block-count {
+      font-size: 14px; color: var(--text-body); font-weight: 500;
+    }
+
+    /* ── MASONRY ──────────────────────────────────────── */
+    .masonry {
+      column-count: 4;
+      column-gap: 14px;
+    }
+    .masonry .tile {
+      break-inside: avoid;
+      margin: 0 0 14px;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--color-grey-50);
+    }
+    .masonry .tile img {
+      width: 100%; display: block;
+      transition: transform var(--transition-slow);
+    }
+    .masonry .tile:hover img { transform: scale(1.06); }
+    .masonry .tile figcaption {
+      position: absolute; inset: auto 0 0 0;
+      padding: 42px 14px 14px;
+      background: linear-gradient(to top, rgba(10,15,26,0.88), transparent);
+      color: #fff;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity var(--transition-base), transform var(--transition-base);
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .masonry .tile:hover figcaption { opacity: 1; transform: translateY(0); }
+    .masonry .meta-brand {
+      font-weight: 700; font-size: 14px;
+      color: var(--color-aqua);
+    }
+    .masonry .meta-venue {
+      font-size: 12px; color: rgba(255,255,255,0.85);
+    }
+
+    /* ── BRAND WALL ───────────────────────────────────── */
+    section.brands {
+      background: var(--color-grey-50);
+      padding: var(--spacing-section-y) var(--spacing-section-x);
+      margin-top: 40px;
+    }
+    .brands-inner { max-width: var(--max-width-content); margin: 0 auto; }
+    .brand-grid {
+      display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 8px;
+    }
+    .brand-tag {
+      display: inline-flex; align-items: center;
+      padding: 14px 22px;
+      font-size: 18px; font-weight: 700;
+      color: var(--text-black);
+      background: #fff;
+      border: 1px solid var(--color-grey-200);
+      border-radius: var(--radius-badge);
+      transition: all var(--transition-base);
+    }
+    .brand-tag:hover {
+      color: var(--color-aqua);
+      border-color: var(--color-aqua);
+      transform: var(--hover-lift);
+      box-shadow: 0 4px 20px rgba(20,185,214,0.10);
+    }
+
+    /* ── MARQUEE / GEOGRAPHY ──────────────────────────── */
+    section.geo {
+      padding: 80px 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .geo-head {
+      max-width: var(--max-width-content); margin: 0 auto 40px;
+      padding: 0 var(--spacing-section-x);
+    }
+    .marquee {
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      padding: 20px 0;
+      border-top: 1px solid var(--color-grey-200);
+      border-bottom: 1px solid var(--color-grey-200);
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee-scroll var(--animation-scroll) linear infinite;
+      font-size: 22px; font-weight: 600;
+      color: var(--color-grey-500);
+      letter-spacing: -0.3px;
+    }
+    .marquee-track span { padding: 0 4px; }
+    .marquee-track span:hover { color: var(--color-aqua); }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── CTA ──────────────────────────────────────────── */
+    section.cta {
+      padding: var(--spacing-section-y) var(--spacing-section-x);
+      background: var(--color-navy);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635280fca401e00024dbbf4/438DF566-8DF1-4241-B6C6-4A58336DC63E.JPG');
+      background-size: cover; background-position: center;
+      opacity: 0.25;
+      filter: saturate(1.1);
+    }
+    .cta-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, var(--color-navy) 80%);
+    }
+    .cta-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+    .cta-label {
+      color: var(--color-aqua);
+      font-size: var(--font-size-section-label);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-widest);
+      text-transform: uppercase;
+    }
+    .cta h2 {
+      font-size: var(--font-size-section-title);
+      font-weight: 900; letter-spacing: -1px;
+      margin: 16px 0 32px;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 18px 36px;
+      background: var(--color-aqua); color: #fff;
+      font-weight: 700; font-size: 17px;
+      border-radius: var(--radius-button);
+      box-shadow: var(--shadow-cta-glow);
+      transition: all var(--transition-base);
+    }
+    .cta-btn:hover {
+      background: var(--color-orange);
+      transform: var(--hover-lift);
+      box-shadow: var(--shadow-cta-glow-hover);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      padding: 48px var(--spacing-section-x);
+      background: #fff;
+      border-top: 1px solid var(--color-grey-200);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+    }
+    footer img { height: 22px; opacity: 0.9; }
+    footer small { color: var(--text-placeholder); font-size: 13px; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1080px) {
+      .masonry { column-count: 3; }
+    }
+    @media (max-width: 900px) {
+      .nav { padding: 14px 24px; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 110px 24px 60px;
+        gap: 40px;
+      }
+      .hero-grid { grid-template-rows: repeat(3, 100px); }
+      .masonry { column-count: 2; }
+      section.block { padding: 60px 24px; }
+      section.brands, section.cta { padding: 60px 24px; }
+      .geo-head { padding: 0 24px; }
+      footer { padding: 32px 24px; }
+    }
+    @media (max-width: 540px) {
+      .masonry { column-count: 1; }
+      .nav-cta { padding: 10px 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="https://www.recess.is/" class="nav-logo"><img src="logo-full-aqua.png" alt="Recess"></a>
+    <a href="#cta" class="nav-cta">Partner with us →</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <span class="hero-label">University Housing · Recess</span>
+      <h1>Brands meet students <em>where they live.</em></h1>
+      <div class="hero-stat">
+        <strong>99+</strong>
+        <span>university housing communities<br>activated with Recess</span>
+      </div>
+    </div>
+    <div class="hero-grid">
+      <figure class="hero-tile hero-tile-1"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65aeb369ecd1300002bf8c0a/MicrosoftTeams-image__5_.jpeg" alt="KOE Kombucha at Fraternity Row" loading="lazy"><figcaption><span class="chip">KOE Kombucha</span></figcaption></figure>
+          <figure class="hero-tile hero-tile-2"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65aeb287ecd1300002bf8c09/MicrosoftTeams-image__4_.png" alt="KOE Kombucha at Fraternity Row" loading="lazy"><figcaption><span class="chip">KOE Kombucha</span></figcaption></figure>
+          <figure class="hero-tile hero-tile-3"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc2524394d030002119ff9/IMG_8097.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy"><figcaption><span class="chip">Pbvllc</span></figcaption></figure>
+          <figure class="hero-tile hero-tile-4"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc22ac394d030002119ff1/IMG_2903.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy"><figcaption><span class="chip">Pbvllc</span></figcaption></figure>
+          <figure class="hero-tile hero-tile-5"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc22a7394d030002119feb/IMG_2905.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy"><figcaption><span class="chip">Pbvllc</span></figcaption></figure>
+          <figure class="hero-tile hero-tile-6"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5f3a9d74800026a556d/IMG_6099.jpg" alt="PepsiCo at Stadium View" loading="lazy"><figcaption><span class="chip">PepsiCo</span></figcaption></figure>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="block-head">
+      <div>
+        <span class="block-label">The activations</span>
+        <h2 class="block-title">Real moments, real students, real brands.</h2>
+      </div>
+      <span class="block-count">16 campaigns shown · thousands more in our network</span>
+    </div>
+    <div class="masonry">
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5e1a9d74800026a556c/IMG_6062.jpg" alt="PepsiCo at Stadium View" loading="lazy"><figcaption><span class="meta-brand">PepsiCo</span><span class="meta-venue">Stadium View</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5dca9d74800026a556b/IMG_6049.jpg" alt="PepsiCo at Stadium View" loading="lazy"><figcaption><span class="meta-brand">PepsiCo</span><span class="meta-venue">Stadium View</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fca08594e33400021e0d52/IMG_2035.jpg" alt="NOCCO at Gateway at Denton" loading="lazy"><figcaption><span class="meta-brand">NOCCO</span><span class="meta-venue">Gateway at Denton</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9ffd94e33400021e0d51/IMG_2064.jpg" alt="NOCCO at Gateway at Denton" loading="lazy"><figcaption><span class="meta-brand">NOCCO</span><span class="meta-venue">Gateway at Denton</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9ff994e33400021e0d50/IMG_2063.jpg" alt="NOCCO at Gateway at Denton" loading="lazy"><figcaption><span class="meta-brand">NOCCO</span><span class="meta-venue">Gateway at Denton</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65f498eefe692f00021f725a/guru11.jpg" alt="Guru at West 27th" loading="lazy"><figcaption><span class="meta-brand">Guru</span><span class="meta-venue">West 27th</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635280fca401e00024dbbf4/438DF566-8DF1-4241-B6C6-4A58336DC63E.JPG" alt="Onnit at VERVE Madison" loading="lazy"><figcaption><span class="meta-brand">Onnit</span><span class="meta-venue">VERVE Madison</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66352809ca401e00024dbbf3/777D8B83-7119-42AB-949E-437AE7237459.JPG" alt="Onnit at VERVE Madison" loading="lazy"><figcaption><span class="meta-brand">Onnit</span><span class="meta-venue">VERVE Madison</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/663527feca401e00024dbbf2/7530FE42-F300-421A-B377-12DD3DEA3213.JPG" alt="Onnit at VERVE Madison" loading="lazy"><figcaption><span class="meta-brand">Onnit</span><span class="meta-venue">VERVE Madison</span></figcaption></figure>
+        <figure class="tile"><img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/m6mbez776uicn8nemdmc.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy"><figcaption><span class="meta-brand">The Kraft Heinz Company</span><span class="meta-venue">The Village of Meadowview</span></figcaption></figure>
+        <figure class="tile"><img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/ufghsnqty3gqx8ztnc1k.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy"><figcaption><span class="meta-brand">The Kraft Heinz Company</span><span class="meta-venue">The Village of Meadowview</span></figcaption></figure>
+        <figure class="tile"><img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zbod9v4pnumv4eo67upz.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy"><figcaption><span class="meta-brand">The Kraft Heinz Company</span><span class="meta-venue">The Village of Meadowview</span></figcaption></figure>
+        <figure class="tile"><img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1725392796/default/zbaaxko7d0tiahyv4lin.jpg" alt="Oreo at Oakbrook" loading="lazy"><figcaption><span class="meta-brand">Oreo</span><span class="meta-venue">Oakbrook</span></figcaption></figure>
+        <figure class="tile"><img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1725295931/default/kfvykllptwldosojmkg5.jpg" alt="Oreo at Oakbrook" loading="lazy"><figcaption><span class="meta-brand">Oreo</span><span class="meta-venue">Oakbrook</span></figcaption></figure>
+        <figure class="tile"><img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1725295783/default/rserdk9kj9mnjxfxynyd.jpg" alt="Oreo at Oakbrook" loading="lazy"><figcaption><span class="meta-brand">Oreo</span><span class="meta-venue">Oakbrook</span></figcaption></figure>
+        <figure class="tile"><img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6571f09a2dd4260002210b86/IMG_0623.jpg" alt="Harmless Harvest at Aspire College Station" loading="lazy"><figcaption><span class="meta-brand">Harmless Harvest</span><span class="meta-venue">Aspire College Station</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="brands">
+    <div class="brands-inner">
+      <div class="block-head">
+        <div>
+          <span class="block-label">Brand partners</span>
+          <h2 class="block-title">Brands that chose university housing.</h2>
+        </div>
+      </div>
+      <div class="brand-grid">
+        <span class="brand-tag">Campus Commandos</span>
+        <span class="brand-tag">Guru</span>
+        <span class="brand-tag">Harmless Harvest</span>
+        <span class="brand-tag">Hero Cosmetics</span>
+        <span class="brand-tag">KOE Kombucha</span>
+        <span class="brand-tag">NOCCO</span>
+        <span class="brand-tag">Onnit</span>
+        <span class="brand-tag">Oreo</span>
+        <span class="brand-tag">Pbvllc</span>
+        <span class="brand-tag">PepsiCo</span>
+        <span class="brand-tag">The Kraft Heinz Company</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="geo">
+    <div class="geo-head">
+      <span class="block-label">Coast to coast</span>
+      <h2 class="block-title">99 communities and counting.</h2>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track"><span>12 North</span> · <span>20Hawley</span> · <span>345 Flats</span> · <span>8th &amp; High</span> · <span>9 @ Memphis</span> · <span>Ace Berkeley</span> · <span>Altitude Baton Rouge</span> · <span>Altitude at Wichita</span> · <span>Aspire College Station</span> · <span>Axis West Campus</span> · <span>BLVD Gainesville</span> · <span>Ballpark North</span> · <span>CP Cincy</span> · <span>Campus Edge</span> · <span>Campus Quarters</span> · <span>Campus Walk</span> · <span>Canvas Townhomes Morgantown</span> · <span>Chapter at Eugene</span> · <span>Coastal Village</span> · <span>College Town Fayetteville</span> · <span>College Town Mankato</span> · <span>College Town Oxford</span> · <span>College Town at Coastal</span> · <span>Commons at Sawmill</span> · <span>Domain at Waco</span> · <span>Element Living</span> · <span>Elevate</span> · <span>Elevate Student Living</span> · <span>Everly on the Loop</span> · <span>Fraternity Row</span> · <span>GSH Houston at U of H</span> · <span>Gateway at Denton</span> · <span>Inspire on 22nd</span> · <span>Irish Flats</span> · <span>Maverick Place</span> · <span>Miami Preserve</span> · <span>Midtown Stillwater</span> · <span>My House on 13th</span> · <span>Nine20 Tempe</span> · <span>Oakbrook</span> · <span>Orchard Carrollton</span> · <span>Otto</span> · <span>Overlook</span> · <span>Paloma University City</span> · <span>Peer on 7th</span> · <span>Proxi Lawrence</span> · <span>RUSH</span> · <span>RentMSU Houses</span> · <span>Rev</span> · <span>Solis Isla Vista</span> · <span>Stadium Suites</span> · <span>Stadium View</span> · <span>Terrace View Apartments</span> · <span>The 87</span> · <span>The Abigail</span> · <span>The Arch at Abilene</span> · <span>The Buckingham</span> · <span>The Centre</span> · <span>The Cottages at Lake Tamaha</span> · <span>The Domain</span> · <span>The Flight</span> · <span>The Henry</span> · <span>The Kristi</span> · <span>The Landing Ames</span> · <span>The Landing at CoMo</span> · <span>The Landing at College Station</span> · <span>The Lofts@1633</span> · <span>The London</span> · <span>The Nest Iowa City</span> · <span>The Outpost</span> · <span>The Pier Conway</span> · <span>The Quarters at Ames</span> · <span>The Quarters at Bloomington</span> · <span>The Quarters at Columbia</span> · <span>The Quarters at East Lansing</span> · <span>The Quarters at East Lansing Cottages</span> · <span>The Quarters at East Lansing – Gaslight Village</span> · <span>The Quarters at Lawrence</span> · <span>The Quarters at Mankato</span> · <span>The Quarters at Vermillion</span> · <span>The Reef</span> · <span>The Ridge</span> · <span>The Rockland</span> · <span>The Scarlet</span> · <span>The Thompson</span> · <span>The Verge</span> · <span>The Vic</span> · <span>The View at Montgomery</span> · <span>The Village of Meadowview</span> · <span>URSA</span> · <span>University Edge - Cincinnati</span> · <span>University Edge - Youngstown</span> · <span>University Village</span> · <span>VERVE Madison</span> · <span>Vantage</span> · <span>Viridian</span> · <span>West 27th</span> · <span>West Pine Lofts</span> · <span>Wolf Run Vintage</span> · <span>12 North</span> · <span>20Hawley</span> · <span>345 Flats</span> · <span>8th &amp; High</span> · <span>9 @ Memphis</span> · <span>Ace Berkeley</span> · <span>Altitude Baton Rouge</span> · <span>Altitude at Wichita</span> · <span>Aspire College Station</span> · <span>Axis West Campus</span> · <span>BLVD Gainesville</span> · <span>Ballpark North</span> · <span>CP Cincy</span> · <span>Campus Edge</span> · <span>Campus Quarters</span> · <span>Campus Walk</span> · <span>Canvas Townhomes Morgantown</span> · <span>Chapter at Eugene</span> · <span>Coastal Village</span> · <span>College Town Fayetteville</span> · <span>College Town Mankato</span> · <span>College Town Oxford</span> · <span>College Town at Coastal</span> · <span>Commons at Sawmill</span> · <span>Domain at Waco</span> · <span>Element Living</span> · <span>Elevate</span> · <span>Elevate Student Living</span> · <span>Everly on the Loop</span> · <span>Fraternity Row</span> · <span>GSH Houston at U of H</span> · <span>Gateway at Denton</span> · <span>Inspire on 22nd</span> · <span>Irish Flats</span> · <span>Maverick Place</span> · <span>Miami Preserve</span> · <span>Midtown Stillwater</span> · <span>My House on 13th</span> · <span>Nine20 Tempe</span> · <span>Oakbrook</span> · <span>Orchard Carrollton</span> · <span>Otto</span> · <span>Overlook</span> · <span>Paloma University City</span> · <span>Peer on 7th</span> · <span>Proxi Lawrence</span> · <span>RUSH</span> · <span>RentMSU Houses</span> · <span>Rev</span> · <span>Solis Isla Vista</span> · <span>Stadium Suites</span> · <span>Stadium View</span> · <span>Terrace View Apartments</span> · <span>The 87</span> · <span>The Abigail</span> · <span>The Arch at Abilene</span> · <span>The Buckingham</span> · <span>The Centre</span> · <span>The Cottages at Lake Tamaha</span> · <span>The Domain</span> · <span>The Flight</span> · <span>The Henry</span> · <span>The Kristi</span> · <span>The Landing Ames</span> · <span>The Landing at CoMo</span> · <span>The Landing at College Station</span> · <span>The Lofts@1633</span> · <span>The London</span> · <span>The Nest Iowa City</span> · <span>The Outpost</span> · <span>The Pier Conway</span> · <span>The Quarters at Ames</span> · <span>The Quarters at Bloomington</span> · <span>The Quarters at Columbia</span> · <span>The Quarters at East Lansing</span> · <span>The Quarters at East Lansing Cottages</span> · <span>The Quarters at East Lansing – Gaslight Village</span> · <span>The Quarters at Lawrence</span> · <span>The Quarters at Mankato</span> · <span>The Quarters at Vermillion</span> · <span>The Reef</span> · <span>The Ridge</span> · <span>The Rockland</span> · <span>The Scarlet</span> · <span>The Thompson</span> · <span>The Verge</span> · <span>The Vic</span> · <span>The View at Montgomery</span> · <span>The Village of Meadowview</span> · <span>URSA</span> · <span>University Edge - Cincinnati</span> · <span>University Edge - Youngstown</span> · <span>University Village</span> · <span>VERVE Madison</span> · <span>Vantage</span> · <span>Viridian</span> · <span>West 27th</span> · <span>West Pine Lofts</span> · <span>Wolf Run Vintage</span></div>
+    </div>
+  </section>
+
+  <section id="cta" class="cta">
+    <div class="cta-bg"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-inner">
+      <span class="cta-label">Let's talk</span>
+      <h2>Bring your brand to university housing.</h2>
+      <a href="https://www.recess.is/contact" class="cta-btn">Get in touch →</a>
+    </div>
+  </section>
+
+  <footer>
+    <img src="logo-icon-aqua.png" alt="Recess">
+    <small>© Recess · University Housing · 11 brands · 99 venues</small>
+  </footer>
+
+</body>
+</html>
