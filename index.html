@@ -51,7 +51,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background-image: url('https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65aeb369ecd1300002bf8c0a/MicrosoftTeams-image__5_.jpeg');
+      background-image: url('https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d7a9d74800026a556a/IMG_6048.jpg');
       background-size: cover; background-position: center;
       filter: saturate(1.1);
     }
@@ -429,6 +429,74 @@
       .strip-tile { width: 220px; height: 150px; }
     }
 
+
+    /* ── STATEMENT (full-bleed intro) ────────────────── */
+    .statement {
+      background: var(--color-navy);
+      padding-top: 120px;
+    }
+    .statement-inner {
+      max-width: 1160px;
+      margin: 0 auto 56px;
+      padding: 0 48px;
+    }
+    .statement-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      overflow: hidden;
+      margin: 0;
+      max-height: 640px;
+    }
+    .statement-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s ease-out;
+      filter: brightness(0.92) saturate(1.1);
+    }
+    .statement-photo:hover img { transform: scale(1.03); }
+    .statement-photo figcaption {
+      position: absolute;
+      bottom: 32px; left: 48px;
+      display: flex; flex-direction: column; gap: 6px;
+      z-index: 2;
+    }
+    .statement-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,15,26,0.75) 0%, transparent 35%);
+      pointer-events: none;
+    }
+    .statement-photo .chip-brand { font-size: 13px; padding: 6px 14px; }
+    .statement-photo .chip-venue { font-size: 15px; }
+
+    /* ── MEGA MASONRY (unified section) ──────────────── */
+    .mega-masonry-section { padding-top: 80px; padding-bottom: 120px; }
+    .mega-masonry-section .masonry { column-count: 4; column-gap: 10px; }
+    .mega-masonry-section .masonry .tile {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .mega-masonry-section .masonry .tile.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .mega-masonry-section .masonry { column-count: 3; }
+    }
+    @media (max-width: 900px) {
+      .statement-inner { padding: 0 24px; }
+      .statement-photo figcaption { bottom: 20px; left: 24px; }
+      .mega-masonry-section .masonry { column-count: 2; }
+    }
+    @media (max-width: 540px) {
+      .mega-masonry-section .masonry { column-count: 1; }
+    }
+
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 1080px) {
       .masonry { column-count: 3; }
@@ -486,304 +554,345 @@
       </div>
     </div>
   </section>
-
   
-  <section class="photo-strip">
-    <div class="strip-track">
-        <figure class="strip-tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zbod9v4pnumv4eo67upz.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">The Village of Meadowview</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d2a9d74800026a5569/IMG_6040.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635086eab91de0002d37f2f/IMG_2669.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13610b0cd7a0002e4fa62/Recess_Image__6.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635087aab91de0002d37f31/IMG_2662__1_.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zbod9v4pnumv4eo67upz.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">The Village of Meadowview</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d2a9d74800026a5569/IMG_6040.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635086eab91de0002d37f2f/IMG_2669.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13610b0cd7a0002e4fa62/Recess_Image__6.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="strip-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635087aab91de0002d37f31/IMG_2662__1_.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-    </div>
-  </section>
-  <section id="activations" class="block">
-    <div class="block-head">
-      <div>
-        <span class="block-label">The activations</span>
-        <h2 class="block-title">Real students. Real doors. Real brands.</h2>
+  <section class="statement">
+    <div class="statement-inner">
+      <div class="block-head" style="align-items: flex-start; gap: 20px;">
+        <div>
+          <span class="block-label">The activations</span>
+          <h2 class="block-title">Real students. Real doors. Real brands.</h2>
+        </div>
+        <span class="block-meta">46 moments · 99+ communities · 11+ brands</span>
       </div>
-      <span class="block-meta">18 moments shown · 19,702+ in the network</span>
     </div>
+    <figure class="statement-photo">
+      <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/m6mbez776uicn8nemdmc.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
+      <figcaption>
+        <span class="chip-brand">The Kraft Heinz Company</span>
+        <span class="chip-venue">The Village of Meadowview</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section id="activations" class="block mega-masonry-section">
     <div class="masonry">
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c1362cb0cd7a0002e4fa65/Recess_Image__7.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9fe894e33400021e0d4e/IMG_2061.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">NOCCO</span>
-            <span class="chip-venue">Gateway at Denton</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13617b0cd7a0002e4fa63/Recess_Image__8.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
+        <figure class="tile" data-reveal>
           <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/ufghsnqty3gqx8ztnc1k.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
           <figcaption>
             <span class="chip-brand">The Kraft Heinz Company</span>
             <span class="chip-venue">The Village of Meadowview</span>
           </figcaption>
         </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b571a9d74800026a555b/PXL_20240208_171209723.PORTRAIT.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13610b0cd7a0002e4fa62/Recess_Image__6.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66350874ab91de0002d37f30/IMG_2666.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
+        <figure class="tile" data-reveal>
           <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635087aab91de0002d37f31/IMG_2662__1_.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
           <figcaption>
             <span class="chip-brand">Onnit</span>
             <span class="chip-venue">Canvas Townhomes Morgantown</span>
           </figcaption>
         </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13601b0cd7a0002e4fa61/Recess_Image__5.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5f3a9d74800026a556d/IMG_6099.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fca08594e33400021e0d52/IMG_2035.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">NOCCO</span>
-            <span class="chip-venue">Gateway at Denton</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zbod9v4pnumv4eo67upz.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
+        <figure class="tile" data-reveal>
+          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1724441094/default/ep1rcd4ripmzfobxjurf.jpg" alt="The Kraft Heinz Company at Lodge on the Trail" loading="lazy">
           <figcaption>
             <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">The Village of Meadowview</span>
+            <span class="chip-venue">Lodge on the Trail</span>
           </figcaption>
         </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5e1a9d74800026a556c/IMG_6062.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b56da9d74800026a5557/PXL_20240208_201145027.PORTRAIT.jpg" alt="PepsiCo at Stadium View" loading="lazy">
           <figcaption>
             <span class="chip-brand">PepsiCo</span>
             <span class="chip-venue">Stadium View</span>
           </figcaption>
         </figure>
-        <figure class="tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727124911/default/dtholfrto9h80f5wygbl.jpg" alt="The Kraft Heinz Company at Solis Isla Vista" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">Solis Isla Vista</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9ffd94e33400021e0d51/IMG_2064.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">NOCCO</span>
-            <span class="chip-venue">Gateway at Denton</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b561a9d74800026a554c/PXL_20240206_220327864.PORTRAIT.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d2a9d74800026a5569/IMG_6040.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c135f0b0cd7a0002e4fa5f/Recess_Image__3.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66058dd0870522000232114e/thumbnail_IMG_4282.jpg" alt="NOCCO at Campus Edge" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">NOCCO</span>
-            <span class="chip-venue">Campus Edge</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/663525bbca401e00024dbbbc/tinywow_IMG_1045_54857647.jpg" alt="Onnit at The View at Montgomery" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">The View at Montgomery</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635086eab91de0002d37f2f/IMG_2669.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
+        <figure class="tile" data-reveal>
           <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65f33d33302b3800027bb019/processed-860B08BB-5219-40C9-B2F7-3FDFFEC51020.jpeg" alt="NOCCO at Campus Edge" loading="lazy">
           <figcaption>
             <span class="chip-brand">NOCCO</span>
             <span class="chip-venue">Campus Edge</span>
           </figcaption>
         </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c135d5b0cd7a0002e4fa57/Recess_Image__2.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c135f7b0cd7a0002e4fa60/Recess_Image__4.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
           <figcaption>
             <span class="chip-brand">Pbvllc</span>
             <span class="chip-venue">College Town at Coastal</span>
           </figcaption>
         </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b716a9d74800026a5578/s_2.jpeg" alt="PepsiCo at Rev" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Rev</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/m6mbez776uicn8nemdmc.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">The Village of Meadowview</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1724441094/default/mgoxcygtyzlnu0rvygzh.jpg" alt="The Kraft Heinz Company at Lodge on the Trail" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">Lodge on the Trail</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d7a9d74800026a556a/IMG_6048.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66058dd28705220002321150/thumbnail_IMG_4274.jpg" alt="NOCCO at Campus Edge" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">NOCCO</span>
-            <span class="chip-venue">Campus Edge</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zrkigwxkdt3wmx4sn49j.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">The Village of Meadowview</span>
-          </figcaption>
-        </figure>
-        <figure class="tile">
+        <figure class="tile" data-reveal>
           <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5dca9d74800026a556b/IMG_6049.jpg" alt="PepsiCo at Stadium View" loading="lazy">
           <figcaption>
             <span class="chip-brand">PepsiCo</span>
             <span class="chip-venue">Stadium View</span>
           </figcaption>
         </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc2599394d03000211a00e/IMG_2904.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">The Pier Conway</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5f3a9d74800026a556d/IMG_6099.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zrkigwxkdt3wmx4sn49j.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">The Kraft Heinz Company</span>
+            <span class="chip-venue">The Village of Meadowview</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c1361db0cd7a0002e4fa64/Recess_Image__10.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/663525bbca401e00024dbbbc/tinywow_IMG_1045_54857647.jpg" alt="Onnit at The View at Montgomery" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Onnit</span>
+            <span class="chip-venue">The View at Montgomery</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66058dd28705220002321150/thumbnail_IMG_4274.jpg" alt="NOCCO at Campus Edge" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">NOCCO</span>
+            <span class="chip-venue">Campus Edge</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc2583394d03000211a00b/IMG_2903.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">The Pier Conway</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9ffd94e33400021e0d51/IMG_2064.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">NOCCO</span>
+            <span class="chip-venue">Gateway at Denton</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65f49791fe692f00021f7256/guru6.jpg" alt="Guru at West 27th" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Guru</span>
+            <span class="chip-venue">West 27th</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b561a9d74800026a554c/PXL_20240206_220327864.PORTRAIT.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66350841ab91de0002d37f26/IMG_2677.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Onnit</span>
+            <span class="chip-venue">Canvas Townhomes Morgantown</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d7a9d74800026a556a/IMG_6048.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635086eab91de0002d37f2f/IMG_2669.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Onnit</span>
+            <span class="chip-venue">Canvas Townhomes Morgantown</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c1362cb0cd7a0002e4fa65/Recess_Image__7.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc25ac394d03000211a010/IMG_2906.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">The Pier Conway</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c135d5b0cd7a0002e4fa57/Recess_Image__2.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5d2a9d74800026a5569/IMG_6040.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66350874ab91de0002d37f30/IMG_2666.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Onnit</span>
+            <span class="chip-venue">Canvas Townhomes Morgantown</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9fe894e33400021e0d4e/IMG_2061.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">NOCCO</span>
+            <span class="chip-venue">Gateway at Denton</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/663525dbca401e00024dbbc1/tinywow_IMG_1042_54858417.jpg" alt="Onnit at The View at Montgomery" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Onnit</span>
+            <span class="chip-venue">The View at Montgomery</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727124911/default/dtholfrto9h80f5wygbl.jpg" alt="The Kraft Heinz Company at Solis Isla Vista" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">The Kraft Heinz Company</span>
+            <span class="chip-venue">Solis Isla Vista</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65aeb369ecd1300002bf8c0a/MicrosoftTeams-image__5_.jpeg" alt="KOE Kombucha at Fraternity Row" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">KOE Kombucha</span>
+            <span class="chip-venue">Fraternity Row</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1724441094/default/mgoxcygtyzlnu0rvygzh.jpg" alt="The Kraft Heinz Company at Lodge on the Trail" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">The Kraft Heinz Company</span>
+            <span class="chip-venue">Lodge on the Trail</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13610b0cd7a0002e4fa62/Recess_Image__6.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635084fab91de0002d37f28/IMG_2679.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Onnit</span>
+            <span class="chip-venue">Canvas Townhomes Morgantown</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fca08594e33400021e0d52/IMG_2035.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">NOCCO</span>
+            <span class="chip-venue">Gateway at Denton</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66058dd0870522000232114e/thumbnail_IMG_4282.jpg" alt="NOCCO at Campus Edge" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">NOCCO</span>
+            <span class="chip-venue">Campus Edge</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9fd294e33400021e0d49/IMG_2058.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">NOCCO</span>
+            <span class="chip-venue">Gateway at Denton</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13601b0cd7a0002e4fa61/Recess_Image__5.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc258f394d03000211a00c/IMG_2902.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">The Pier Conway</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b55ba9d74800026a5546/IMG_6031.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6571f09a2dd4260002210b86/IMG_0623.jpg" alt="Harmless Harvest at Aspire College Station" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Harmless Harvest</span>
+            <span class="chip-venue">Aspire College Station</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b5e1a9d74800026a556c/IMG_6062.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c135f0b0cd7a0002e4fa5f/Recess_Image__3.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c13617b0cd7a0002e4fa63/Recess_Image__8.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">Pbvllc</span>
+            <span class="chip-venue">College Town at Coastal</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b716a9d74800026a5578/s_2.jpeg" alt="PepsiCo at Rev" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Rev</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b571a9d74800026a555b/PXL_20240208_171209723.PORTRAIT.jpg" alt="PepsiCo at Stadium View" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">PepsiCo</span>
+            <span class="chip-venue">Stadium View</span>
+          </figcaption>
+        </figure>
+        <figure class="tile" data-reveal>
+          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1727967068/default/zbod9v4pnumv4eo67upz.jpg" alt="The Kraft Heinz Company at The Village of Meadowview" loading="lazy">
+          <figcaption>
+            <span class="chip-brand">The Kraft Heinz Company</span>
+            <span class="chip-venue">The Village of Meadowview</span>
+          </figcaption>
+        </figure>
     </div>
   </section>
-
   <section class="brands-section">
     <div class="brands-inner">
       <span class="block-label">Brand partners</span>
@@ -801,128 +910,6 @@
         <div class="brand-logo" title="PepsiCo"><img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" onerror="this.parentElement.classList.add('no-logo');this.parentElement.textContent='PepsiCo';"></div>
         <div class="brand-logo" title="The Kraft Heinz Company"><img src="https://logo.clearbit.com/kraftheinzcompany.com" alt="The Kraft Heinz Company" onerror="this.parentElement.classList.add('no-logo');this.parentElement.textContent='The Kraft Heinz Company';"></div>
       </div>
-    </div>
-  </section>
-
-  
-  <section class="photo-wall">
-    <div class="wall-head">
-      <span class="block-label">Every door tells a story</span>
-      <h2 class="block-title">46 moments. One network.</h2>
-    </div>
-    <div class="big-grid">
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c135f7b0cd7a0002e4fa60/Recess_Image__4.JPG" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b56da9d74800026a5557/PXL_20240208_201145027.PORTRAIT.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc2583394d03000211a00b/IMG_2903.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">The Pier Conway</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/663525dbca401e00024dbbc1/tinywow_IMG_1042_54858417.jpg" alt="Onnit at The View at Montgomery" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">The View at Montgomery</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc258f394d03000211a00c/IMG_2902.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">The Pier Conway</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65aeb369ecd1300002bf8c0a/MicrosoftTeams-image__5_.jpeg" alt="KOE Kombucha at Fraternity Row" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">KOE Kombucha</span>
-            <span class="chip-venue">Fraternity Row</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65f49791fe692f00021f7256/guru6.jpg" alt="Guru at West 27th" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Guru</span>
-            <span class="chip-venue">West 27th</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc25ac394d03000211a010/IMG_2906.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">The Pier Conway</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6571f09a2dd4260002210b86/IMG_0623.jpg" alt="Harmless Harvest at Aspire College Station" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Harmless Harvest</span>
-            <span class="chip-venue">Aspire College Station</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65fc9fd294e33400021e0d49/IMG_2058.jpg" alt="NOCCO at Gateway at Denton" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">NOCCO</span>
-            <span class="chip-venue">Gateway at Denton</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65c1361db0cd7a0002e4fa64/Recess_Image__10.jpg" alt="Pbvllc at College Town at Coastal" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">College Town at Coastal</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/6635084fab91de0002d37f28/IMG_2679.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65bc2599394d03000211a00e/IMG_2904.JPEG" alt="Pbvllc at The Pier Conway" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Pbvllc</span>
-            <span class="chip-venue">The Pier Conway</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/66350841ab91de0002d37f26/IMG_2677.jpg" alt="Onnit at Canvas Townhomes Morgantown" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">Onnit</span>
-            <span class="chip-venue">Canvas Townhomes Morgantown</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://res.cloudinary.com/recess-live/image/upload/c_fit,q_100,w_1600/v1724441094/default/ep1rcd4ripmzfobxjurf.jpg" alt="The Kraft Heinz Company at Lodge on the Trail" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">The Kraft Heinz Company</span>
-            <span class="chip-venue">Lodge on the Trail</span>
-          </figcaption>
-        </figure>
-        <figure class="grid-tile">
-          <img src="https://marketplace-live-ugc.s3.amazonaws.com/promotable_photo/65d8b55ba9d74800026a5546/IMG_6031.jpg" alt="PepsiCo at Stadium View" loading="lazy">
-          <figcaption>
-            <span class="chip-brand">PepsiCo</span>
-            <span class="chip-venue">Stadium View</span>
-          </figcaption>
-        </figure>
     </div>
   </section>
   <section class="geo">
@@ -949,6 +936,20 @@
     <img src="logo-icon-white.png" alt="Recess">
     <small>© Recess · University Housing · 11 brands · 99 communities · 19,702 campaign moments</small>
   </footer>
+
+
+  <script>
+    // Fade-in-up on scroll
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  </script>
 
 </body>
 </html>
