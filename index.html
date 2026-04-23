@@ -142,7 +142,7 @@
       background: var(--color-navy-light);
       border-top: 1px solid rgba(255,255,255,0.06);
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 80px 48px;
+      padding: 120px 48px;
     }
     .stats-inner {
       max-width: 1160px; margin: 0 auto;
@@ -150,12 +150,13 @@
     }
     .stat { border-left: 2px solid rgba(20,185,214,0.30); padding-left: 24px; }
     .stat-num {
-      font-size: clamp(3rem, 5vw + 0.5rem, 5rem);
+      font-size: clamp(3.5rem, 6vw + 0.5rem, 6.5rem);
       font-weight: 900;
       color: var(--color-aqua);
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 12px;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      margin-bottom: 14px;
+      font-variant-numeric: tabular-nums;
     }
     .stat-label {
       font-size: 15px;
@@ -446,7 +447,7 @@
       aspect-ratio: 3 / 2;
       overflow: hidden;
       margin: 0;
-      max-height: 680px;
+      max-height: 720px;
     }
     .statement-photo img {
       width: 100%; height: 100%;
@@ -471,11 +472,11 @@
     .statement-photo .chip-venue { font-size: 15px; }
 
     /* ── MEGA MASONRY (unified section) ──────────────── */
-    .mega-masonry-section { padding-top: 80px; padding-bottom: 120px; }
-    .mega-masonry-section .masonry { column-count: 4; column-gap: 10px; }
+    .mega-masonry-section { padding: 80px 24px 120px; max-width: none; }
+    .mega-masonry-section .masonry { column-count: 5; column-gap: 8px; max-width: 1600px; margin: 0 auto; }
     .mega-masonry-section .masonry .tile {
       break-inside: avoid;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -485,9 +486,8 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 1080px) {
-      .mega-masonry-section .masonry { column-count: 3; }
-    }
+    @media (max-width: 1280px) { .mega-masonry-section .masonry { column-count: 4; } }
+    @media (max-width: 1080px) { .mega-masonry-section .masonry { column-count: 3; } }
     @media (max-width: 900px) {
       .statement-inner { padding: 0 24px; }
       .statement-photo figcaption { bottom: 20px; left: 24px; }
@@ -498,126 +498,10 @@
     }
 
 
-    /* ── BRAND PROOF (top-of-page logo wall + filter) ── */
-    .brand-proof {
-      background: var(--color-navy-light);
-      padding: 100px 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .brand-proof-inner { max-width: 1280px; margin: 0 auto; }
-    .brand-proof .block-head { margin-bottom: 48px; }
-
-    .filter-status { display: flex; align-items: center; gap: 12px; }
-    .filter-hint {
-      font-size: 13px;
-      color: rgba(255,255,255,0.50);
-      font-weight: 500;
-    }
-    .filter-reset {
-      font-family: inherit;
-      background: rgba(20,185,214,0.12);
-      color: var(--color-aqua);
-      border: 1px solid rgba(20,185,214,0.30);
-      padding: 8px 16px;
-      border-radius: var(--radius-pill);
-      font-size: 13px; font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .filter-reset:hover { background: rgba(20,185,214,0.22); }
-
-    .brand-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 14px;
-    }
-    .brand-card {
-      font-family: inherit;
-      position: relative;
-      background: var(--color-navy);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 14px;
-      padding: 28px 24px 20px;
-      display: flex; flex-direction: column; align-items: center;
-      gap: 16px;
-      cursor: pointer;
-      transition: all var(--transition-base);
-      text-align: center;
-      color: inherit;
-    }
-    .brand-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 14px;
-      background: radial-gradient(ellipse at top, rgba(20,185,214,0.18), transparent 70%);
-      opacity: 0;
-      transition: opacity var(--transition-base);
-      pointer-events: none;
-    }
-    .brand-card:hover {
-      border-color: var(--color-aqua);
-      transform: var(--hover-lift);
-    }
-    .brand-card:hover::before { opacity: 1; }
-    .brand-card[aria-pressed="true"] {
-      border-color: var(--color-aqua);
-      background: rgba(20,185,214,0.06);
-      box-shadow: 0 0 0 1px var(--color-aqua), 0 8px 32px rgba(20,185,214,0.25);
-    }
-    .brand-card[aria-pressed="true"]::before { opacity: 1; }
-
-    .brand-card-logo {
-      height: 56px;
-      display: flex; align-items: center; justify-content: center;
-      width: 100%;
-    }
-    .brand-card-logo img {
-      max-height: 56px;
-      max-width: 90%;
-      object-fit: contain;
-      transition: all var(--transition-base);
-    }
-    .brand-card:hover .brand-card-logo img { transform: scale(1.05); }
-    .brand-card-logo .brand-name-fallback {
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-    .brand-card-meta {
-      display: flex; flex-direction: column; gap: 4px;
-      width: 100%;
-    }
-    .brand-card-name {
-      font-size: 14px; font-weight: 700;
-      color: rgba(255,255,255,0.90);
-      letter-spacing: -0.01em;
-    }
-    .brand-card-count {
-      font-size: 13px; font-weight: 600;
-      color: var(--color-aqua);
-      letter-spacing: 0.02em;
-    }
 
     /* ── Filter state: dim non-matching photos ───────── */
-    body.is-filtering .tile:not([data-brand*="__ACTIVE__"]),
-    body.is-filtering .statement-photo:not([data-brand*="__ACTIVE__"]) {
-      opacity: 0.08;
-      filter: grayscale(100%);
-      transition: opacity 0.4s ease, filter 0.4s ease;
-      pointer-events: none;
-    }
-    body.is-filtering .tile[data-brand*="__ACTIVE__"],
-    body.is-filtering .statement-photo[data-brand*="__ACTIVE__"] {
-      opacity: 1;
-      filter: none;
-      transition: all 0.4s ease;
-    }
-
     @media (max-width: 900px) {
-      .brand-proof { padding: 60px 24px; }
-      .brand-card-grid { grid-template-columns: repeat(2, 1fr); }
-    }
+      }
 
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 1080px) {
@@ -673,101 +557,6 @@
       <div class="stat">
         <div class="stat-num">11+</div>
         <div class="stat-label">top brands already in the network</div>
-      </div>
-    </div>
-  </section>
-  
-
-  <section class="brand-proof" id="brands">
-    <div class="brand-proof-inner">
-      <div class="block-head">
-        <div>
-          <span class="block-label">Brand partners</span>
-          <h2 class="block-title">These brands are already winning in university housing.</h2>
-        </div>
-        <div class="filter-status" id="filter-status" aria-live="polite">
-          <span class="filter-hint">Tap a brand to filter the photos below ↓</span>
-          <button type="button" class="filter-reset" id="filter-reset" hidden>Clear filter ×</button>
-        </div>
-      </div>
-      <div class="brand-card-grid">
-        <button class="brand-card" data-brand="Hero Cosmetics" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/heroskincare.com" alt="Hero Cosmetics" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Hero Cosmetics'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Hero Cosmetics</span>
-            <span class="brand-card-count">1,050 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="The Kraft Heinz Company" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/kraftheinzcompany.com" alt="The Kraft Heinz Company" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Kraft Heinz'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Kraft Heinz</span>
-            <span class="brand-card-count">585 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="NOCCO" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/nocco.com" alt="NOCCO" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'NOCCO'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">NOCCO</span>
-            <span class="brand-card-count">570 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="Campus Commandos" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/campuscommandos.com" alt="Campus Commandos" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Campus Commandos'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Campus Commandos</span>
-            <span class="brand-card-count">392 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="Oreo" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/oreo.com" alt="Oreo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Oreo'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Oreo</span>
-            <span class="brand-card-count">240 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="Onnit" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/onnit.com" alt="Onnit" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Onnit'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Onnit</span>
-            <span class="brand-card-count">153 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="PepsiCo" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'PepsiCo'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">PepsiCo</span>
-            <span class="brand-card-count">56 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="Pbvllc" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><span class="brand-name-fallback">Pbvllc</span></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Pbvllc</span>
-            <span class="brand-card-count">20 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="Guru" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/guruenergy.com" alt="Guru" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Guru'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Guru</span>
-            <span class="brand-card-count">10 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="KOE Kombucha" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/drinkkoe.com" alt="KOE Kombucha" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'KOE Kombucha'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">KOE Kombucha</span>
-            <span class="brand-card-count">2 photos</span>
-          </div>
-        </button>
-        <button class="brand-card" data-brand="Harmless Harvest" type="button" aria-pressed="false">
-          <div class="brand-card-logo"><img src="https://logo.clearbit.com/harmlessharvest.com" alt="Harmless Harvest" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-name-fallback',textContent:'Harmless Harvest'}));"></div>
-          <div class="brand-card-meta">
-            <span class="brand-card-name">Harmless Harvest</span>
-            <span class="brand-card-count">2 photos</span>
-          </div>
-        </button>
       </div>
     </div>
   </section>
@@ -1148,60 +937,33 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
-    // Brand filter: tap a logo to dim non-matching photos
-    const brandCards = document.querySelectorAll('.brand-card');
-    const resetBtn = document.getElementById('filter-reset');
-    const hint = document.querySelector('.filter-hint');
-    let activeBrand = null;
-
-    function applyFilter(brand) {
-      const allTiles = document.querySelectorAll('[data-brand]');
-      allTiles.forEach(t => {
-        const match = t.dataset.brand === brand;
-        t.setAttribute('data-brand-active', match ? '__ACTIVE__' : '');
-      });
-      // Use CSS selector trick: toggle a class on body so we can target
-      document.body.classList.add('is-filtering');
-      // Replace the CSS [data-brand*="__ACTIVE__"] match with actual attr trick via setAttr
-      // Simpler: direct opacity control via JS
-      allTiles.forEach(t => {
-        if (t.dataset.brand === brand) {
-          t.style.opacity = '1';
-          t.style.filter = 'none';
-          t.style.pointerEvents = '';
-        } else {
-          t.style.opacity = '0.08';
-          t.style.filter = 'grayscale(100%)';
-          t.style.pointerEvents = 'none';
-        }
-      });
-    }
-
-    function clearFilter() {
-      document.body.classList.remove('is-filtering');
-      document.querySelectorAll('[data-brand]').forEach(t => {
-        t.style.opacity = '';
-        t.style.filter = '';
-        t.style.pointerEvents = '';
-      });
-      brandCards.forEach(c => c.setAttribute('aria-pressed', 'false'));
-      resetBtn.hidden = true;
-      hint.hidden = false;
-      activeBrand = null;
-    }
-
-    brandCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const brand = card.dataset.brand;
-        if (activeBrand === brand) { clearFilter(); return; }
-        activeBrand = brand;
-        brandCards.forEach(c => c.setAttribute('aria-pressed', c === card ? 'true' : 'false'));
-        applyFilter(brand);
-        resetBtn.hidden = false;
-        hint.hidden = true;
-      });
-    });
-    resetBtn.addEventListener('click', clearFilter);
+    // Animated counters — count up from 0 to target when stats section enters view
+    const statsIO = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        document.querySelectorAll('.stat-num').forEach(el => {
+          const raw = el.textContent.trim();
+          const m = raw.match(/^([\d,]+)(\+?)$/);
+          if (!m) return;
+          const target = parseInt(m[1].replace(/,/g, ''), 10);
+          const suffix = m[2] || '';
+          const duration = 1400;
+          const start = performance.now();
+          const easeOut = t => 1 - Math.pow(1 - t, 3);
+          function frame(now) {
+            const t = Math.min(1, (now - start) / duration);
+            const val = Math.floor(easeOut(t) * target);
+            el.textContent = val.toLocaleString() + suffix;
+            if (t < 1) requestAnimationFrame(frame);
+            else el.textContent = target.toLocaleString() + suffix;
+          }
+          requestAnimationFrame(frame);
+        });
+        statsIO.disconnect();
+      }
+    }, { threshold: 0.4 });
+    const statsEl = document.querySelector('.stats');
+    if (statsEl) statsIO.observe(statsEl);
   </script>
 
 </body>
